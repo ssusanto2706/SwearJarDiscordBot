@@ -1,0 +1,22 @@
+{
+  "name": "swearjardiscordbot",
+  "version": "1.0.0",
+  "description": "A discord bot that counts the number of times a user says a banned word and calculates how much is owed.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssusanto2706/SwearJarDiscordBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssusanto2706/SwearJarDiscordBot/issues"
+  },
+  "homepage": "https://github.com/ssusanto2706/SwearJarDiscordBot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
