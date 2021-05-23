@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ssusanto2706/SwearJarDiscordBot#readme",
   "dependencies": {
-    "discord.js": "^12.5.3"
+    "discord.js": "^12.5.3",
+    "random": "^3.0.6"
   }
 }
