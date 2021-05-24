@@ -1,21 +1,27 @@
 const Discord = require('discord.js');
+const fs = require('fs');
+const jsonfile = require('jsonfile');
 const bot = new Discord.Client();
+
 var stats = {};
 var bannedWords = ["these nut", "deez nut", "deez"];
 
+if(fs.existsSync('stats.json')){
+    stats = jsonfile.readFileSync('stats.json');
+}
+
 bot.on('message', (message) => {
 
-    if(message.guild.id in stats === false){
+    if(!(message.guild.id in stats)){
         stats[message.guild.id] = {};
     }
 
     const guildStats = stats[message.guild.id];
 
-    if (message.author.id in guildStats === false){
+    if (!(message.author.id in guildStats)){
         guildStats[message.author.id] = {
             swear_count: 0,
-            money_owe: 0,
-            last_message: 0
+            money_owe: 0
         };
     }
 
@@ -37,6 +43,8 @@ bot.on('message', (message) => {
                 break;
         }
     }
+
+    jsonfile.writeFileSync('stats.json', stats);
 });
 
-bot.login('ODQ2MTU3MzAzOTg0MjkxODQy.YKrbZg.DJo_1HuVfVxG5WTxqCzI8ML73xY');
+bot.login('ODQ2MTU3MzAzOTg0MjkxODQy.YKrbZg.HTXJrrOhOo-7kJSNTCJnaqThczM');
