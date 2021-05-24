@@ -1,3 +1,4 @@
+require('dotenv').config()
 const Discord = require('discord.js');
 const fs = require('fs');
 const jsonfile = require('jsonfile');
@@ -47,4 +48,4 @@ bot.on('message', (message) => {
     jsonfile.writeFileSync('stats.json', stats);
 });
 
-bot.login('ODQ2MTU3MzAzOTg0MjkxODQy.YKrbZg.HTXJrrOhOo-7kJSNTCJnaqThczM');
+bot.login(process.env.BOT_TOKEN);
