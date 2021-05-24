@@ -1,11 +1,13 @@
 require('dotenv').config();
+
 const Discord = require('discord.js');
 const fs = require('fs');
 const jsonfile = require('jsonfile');
+
 const bot = new Discord.Client();
 
 var stats = {};
-var bannedWords = ["these nut", "deez nut", "deez"];
+var bannedWords = ["these nut", "deez nut", "deez", "neez dut"];
 
 if(fs.existsSync('stats.json')){
     stats = jsonfile.readFileSync('stats.json');
@@ -34,9 +36,9 @@ bot.on('message', (message) => {
         message.reply('hi')
     }
 
-    for (var i=0; i < bannedWords.length; i++){
-        var temp = message.content.toLowerCase()
-        if(temp.includes(bannedWords[i])){
+   for (var i=0; i < bannedWords.length; i++){
+        var lower_message = message.content.toLowerCase();
+        if(lower_message.includes(bannedWords[i])){
                 userStats.swear_count += 1;
                 userStats.money_owe += 0.10;
                 userStats.money_owe = Math.round(userStats.money_owe* 100)/100;
@@ -44,6 +46,14 @@ bot.on('message', (message) => {
                 break;
         }
     }
+
+/*var regex = new RegExp('deez*')
+if(regex.test(message.content.toLowerCase())){
+    userStats.swear_count += 1;
+    userStats.money_owe += 0.10;
+    userStats.money_owe = Math.round(userStats.money_owe* 100)/100;
+    message.reply(' now owes $' + userStats.money_owe.toFixed(2));            
+}*/
 
     jsonfile.writeFileSync('stats.json', stats);
 });
