@@ -7,7 +7,7 @@ const jsonfile = require('jsonfile');
 const bot = new Discord.Client();
 
 var stats = {};
-var bannedWords = ["these nut", "deez nut", "deez", "neez dut"];
+var bannedWords = ["these nut", "deez nut", "deez", "neez dut", "denise noots"];
 
 if(fs.existsSync('stats.json')){
     stats = jsonfile.readFileSync('stats.json');
@@ -35,6 +35,22 @@ bot.on('message', (message) => {
     if(parts[0] === "!hello"){
         message.reply('hi')
     }
+    else if(parts[0] === "!bye"){
+        message.reply('bye')
+    }
+    else if(parts[0] === "!gm"){
+        message.reply('Good Morning! :)')
+    }
+    else if(parts[0] === "!gn"){
+        message.reply('Good Night! Zzz')
+    }
+    else if(parts[0] === "!ily"){
+        message.reply('I love you too <3')
+    }
+    else if(parts[0] === "!ilya"){
+        message.channel.send('I love Amzy! She is the best')
+    }
+
 
    for (var i=0; i < bannedWords.length; i++){
         var lower_message = message.content.toLowerCase();
@@ -57,5 +73,6 @@ if(regex.test(message.content.toLowerCase())){
 
     jsonfile.writeFileSync('stats.json', stats);
 });
+
 
 bot.login(process.env.BOT_TOKEN);
