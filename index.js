@@ -55,6 +55,7 @@ bot.on('message', (message) => {
     var lower_msg = message.content.toLowerCase();
     var decoded_msg = unidecode(lower_msg);
     var cleaned_msg = decoded_msg.replace(/[^a-z]/gi, '');
+    console.log("cleaned message is:" + cleaned_msg);
     if(cleaned_msg.includes("deez")){
         userStats.swear_count += 1;
         userStats.money_owe += 0.10;
