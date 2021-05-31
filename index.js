@@ -3,6 +3,7 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const fs = require('fs');
 const jsonfile = require('jsonfile');
+const unidecode = require('unidecode');
 
 const bot = new Discord.Client();
 
@@ -51,17 +52,25 @@ bot.on('message', (message) => {
         message.channel.send('I love Amzy! She is the best')
     }
 
+    var lower_msg = message.content.toLowerCase();
+    var decoded_msg = unidecode(lower_msg);
+    var cleaned_msg = decoded_msg.replace(/[^a-z]/gi, '');
+    if(cleaned_msg.includes("deez")){
+        userStats.swear_count += 1;
+        userStats.money_owe += 0.10;
+        userStats.money_owe = Math.round(userStats.money_owe* 100)/100;
+        message.reply(' now owes $' + userStats.money_owe.toFixed(2));
+    }
 
-   for (var i=0; i < bannedWords.length; i++){
-        var lower_message = message.content.toLowerCase();
-        if(lower_message.includes(bannedWords[i])){
+   /*for (var i=0; i < bannedWords.length; i++){
+        if(cleaned_msg.includes(bannedWords[i])){
                 userStats.swear_count += 1;
                 userStats.money_owe += 0.10;
                 userStats.money_owe = Math.round(userStats.money_owe* 100)/100;
                 message.reply(' now owes $' + userStats.money_owe.toFixed(2));
                 break;
         }
-    }
+    }*/
 
 /*var regex = new RegExp('deez*')
 if(regex.test(message.content.toLowerCase())){

@@ -24,7 +24,8 @@
     "jsonfile": "^6.1.0",
     "mongoose": "^5.12.10",
     "passport": "^0.4.1",
-    "random": "^3.0.6"
+    "random": "^3.0.6",
+    "unidecode": "^0.1.8"
   },
   "devDependencies": {}
 }
