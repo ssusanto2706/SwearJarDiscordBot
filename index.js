@@ -4,11 +4,24 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const jsonfile = require('jsonfile');
 const unidecode = require('unidecode');
+const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
+
 
 const bot = new Discord.Client();
 
 var stats = {};
 var bannedWords = ["these nut", "deez nut", "deez", "neez dut", "denise noots"];
+
+mongoose.connect(process.env.MONGODB_URI,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+}).then(()=>{
+    console.log('connected to database');
+}).catch((err)=>{
+    console.log(err);
+});
 
 if(fs.existsSync('stats.json')){
     stats = jsonfile.readFileSync('stats.json');
