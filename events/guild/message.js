@@ -22,6 +22,19 @@ module.exports = (Discord, bot, message) =>{
         command.execute(bot, message, args, Discord);
     }
 
+    if(!(message.guild.id in stats)){
+        stats[message.guild.id] = {};
+    }
+    
+    const guildStats = stats[message.guild.id];
+    if (!(message.author.id in guildStats)){
+        guildStats[message.author.id] = {
+            swear_count: 0,
+            money_owe: 0
+        };
+    }
+    const userStats = guildStats[message.author.id];
+
     var decoded_msg = unidecode(message.content.toLowerCase());
     var cleaned_msg = decoded_msg.replace(/[^a-z]/gi, '');
     console.log("cleaned message is:" + cleaned_msg);
