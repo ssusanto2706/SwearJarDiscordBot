@@ -7,5 +7,6 @@ module.exports = async(bot, Discord, member) =>{
         swearCount: 0,
         moneyOwe: 0
     });
+    
     profile.save();
 }
