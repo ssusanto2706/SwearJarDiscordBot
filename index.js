@@ -3,7 +3,7 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
-const profileModel = require("../models/profileSchema");
+const profileModel = require('./models/profileSchema');
 
 const bot = new Discord.Client();
 

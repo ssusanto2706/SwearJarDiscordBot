@@ -1,4 +1,5 @@
 const fs = require('fs'); 
+const { createBrotliCompress } = require('zlib');
 
 module.exports = (bot, Discord) =>{
     const load_dir = (dirs) =>{
@@ -6,7 +7,7 @@ module.exports = (bot, Discord) =>{
         for(const file of event_files){
             const event = require(`../events/${dirs}/${file}`);
             const event_name = file.split('.')[0];
-            client.on(event_name, event.bind(null, Discord, bot));
+            bot.on(event_name, event.bind(null, Discord, bot));
         }
     }
     ['bot', 'guild'].forEach(e => load_dir(e));

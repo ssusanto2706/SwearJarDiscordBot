@@ -27,14 +27,18 @@ module.exports = (Discord, bot, message) =>{
     console.log("cleaned message is:" + cleaned_msg);
 
     if(cleaned_msg.includes("deez")){
-        const response = await profileModel.findOneAndUpdate({
+        /*const response = await profileModel.findOneAndUpdate({
             userID: message.author.id
         },{
             $inc:{
                 swearCount: 0,
                 moneyOwe: 0.1
             }
-        });
+        });*/
+        userStats.swear_count += 1;
+        userStats.money_owe += 0.10;
+        userStats.money_owe = Math.round(userStats.money_owe* 100)/100;
+        message.reply(' now owes $' + userStats.money_owe.toFixed(2));
     }
 
     jsonfile.writeFileSync('stats.json', stats);
