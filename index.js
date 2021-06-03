@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const Discord = require('discord.js');
-const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
 const profileModel = require('./models/profileSchema');
 
@@ -19,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI,{
     useUnifiedTopology: true,
     useFindAndModify: false
 }).then(()=>{
-    console.log('connected to database');
+    console.log('Connected to database!');
 }).catch((err)=>{
     console.log(err);
 });
