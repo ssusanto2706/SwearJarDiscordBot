@@ -55,7 +55,7 @@ module.exports = async (Discord, bot, message) =>{
                 moneyOwe: 1
             }
         });
-        var money_owe = profileData.moneyOwe/100;
+        var money_owe = profileData.moneyOwe/10;
         message.reply(' now owes $' + money_owe.toFixed(2));
     }
 
