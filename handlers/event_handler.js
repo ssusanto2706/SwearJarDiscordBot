@@ -1,5 +1,5 @@
 const fs = require('fs'); 
-const { createBrotliCompress } = require('zlib');
+
 
 module.exports = (bot, Discord) =>{
     const load_dir = (dirs) =>{
