@@ -51,6 +51,7 @@ module.exports = async (Discord, bot, message) =>{
                     }
                 }
             });
+            await guild.save()
         }
     }catch(err){
         console.log(err)
@@ -113,7 +114,7 @@ module.exports = async (Discord, bot, message) =>{
 
     if(cleaned_msg.includes("deez")){
 
-        var response = await profileModel.findOneAndUpdate({
+        const response = await profileModel.findOneAndUpdate({
             userID: message.author.id,
             'guildData.guildID': message.guild.id
         },{
@@ -123,7 +124,7 @@ module.exports = async (Discord, bot, message) =>{
             }
         });
 
-        response = await response.save()
+        await response.save()
 
         var money_owe = response.guildData.find(data => data.guildID == message.guild.id).moneyOwe/10;
 
