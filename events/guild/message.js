@@ -53,12 +53,20 @@ module.exports = async (Discord, bot, message) =>{
             guildData: {guildID}
         },{
             $inc:{
+<<<<<<< HEAD
                 'guildData.swearCount': 1,
                 'guildData.moneyOwe': 1
             }
         }, options.new=true, callback);
         var money_owe = profileData.moneyOwe/10;
+=======
+                swearCount: 1,
+                moneyOwe: 0.1
+            }
+        });
+        var money_owe = profileData.moneyOwe;
+>>>>>>> parent of 74c7173 (changed money owe to 1 not 0.1 prevent rounding error)
         message.reply(' now owes $' + money_owe.toFixed(2));
     }
-
+    
 }
