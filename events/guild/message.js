@@ -19,9 +19,10 @@ module.exports = async (Discord, bot, message) =>{
         if(!profileData){
             let profile = await profileModel.create({
                 userID: message.author.id,
-                guildID: message.guild.id,
-                swearCount: 0,
-                moneyOwe: 0
+                guildData: [{
+                    guildID: message.guild.id,
+                    swearCount: 0,
+                    moneyOwe: 0}]
             });
             profile.save();
         }
@@ -48,14 +49,15 @@ module.exports = async (Discord, bot, message) =>{
     if(cleaned_msg.includes("deez")){
 
         const response = await profileModel.findOneAndUpdate({
-            userID: message.author.id
+            userID: message.author.id,
+            guildData: {guildID}
         },{
             $inc:{
-                swearCount: 1,
-                moneyOwe: 1
+                'guildData.swearCount': 1,
+                'guildData.moneyOwe': 1
             }
-        });
-        var money_owe = profileData.moneyOwe/100;
+        }, options.new=true, callback);
+        var money_owe = profileData.moneyOwe/10;
         message.reply(' now owes $' + money_owe.toFixed(2));
     }
 
