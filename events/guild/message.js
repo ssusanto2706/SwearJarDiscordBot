@@ -52,11 +52,11 @@ module.exports = async (Discord, bot, message) =>{
         },{
             $inc:{
                 swearCount: 1,
-                moneyOwe: 0.1
+                moneyOwe: 1
             }
         });
-        var money_owe = profileData.moneyOwe;
+        var money_owe = profileData.moneyOwe/100;
         message.reply(' now owes $' + money_owe.toFixed(2));
     }
-    
+
 }
