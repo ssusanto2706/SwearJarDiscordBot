@@ -20,10 +20,9 @@ module.exports = async (Discord, bot, message) =>{
         if(!profileData){
             let profile = await profileModel.create({
                 userID: message.author.id,
-                guildData: [{
-                    guildID: message.guild.id,
-                    swearCount: 0,
-                    moneyOwe: 0}]
+                guildID: message.guild.id,
+                swearCount: 0,
+                moneyOwe: 0
             });
             profile.save();
         }
