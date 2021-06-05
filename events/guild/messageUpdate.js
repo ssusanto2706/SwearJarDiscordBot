@@ -7,13 +7,21 @@ module.exports = async (Discord, bot, oldMessage, newMessage) =>{
     console.log("cleaned message is:" + cleaned_msg);
 
     if(cleaned_msg.includes("deez")){
+
         const response = await profileModel.findOneAndUpdate({
-            userID: message.author.id
+            userID: newMessage.author.id,
+            'guildData.guildID': newMessage.guild.id
         },{
             $inc:{
-                swearCount: 0,
-                moneyOwe: 0.1
+                'guildData.$.swearCount': 1,
+                'guildData.$.moneyOwe': 1
             }
         });
+
+        var money_owe = response.guildData.find(data => data.guildID == newMessage.guild.id).moneyOwe/10;
+
+        console.log(money_owe);
+
+        newMessage.reply(' now owes $' + money_owe.toFixed(2));
     }
 }
