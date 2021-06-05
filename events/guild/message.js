@@ -65,6 +65,9 @@ module.exports = async (Discord, bot, message) =>{
             }
         });
         var money_owe = profileData.moneyOwe;
+<<<<<<< HEAD
+>>>>>>> parent of 74c7173 (changed money owe to 1 not 0.1 prevent rounding error)
+=======
 >>>>>>> parent of 74c7173 (changed money owe to 1 not 0.1 prevent rounding error)
         message.reply(' now owes $' + money_owe.toFixed(2));
     }
