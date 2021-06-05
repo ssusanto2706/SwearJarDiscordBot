@@ -113,7 +113,7 @@ module.exports = async (Discord, bot, message) =>{
 
     if(cleaned_msg.includes("deez")){
 
-        const response = await profileModel.findOneAndUpdate({
+        var response = await profileModel.findOneAndUpdate({
             userID: message.author.id,
             'guildData.guildID': message.guild.id
         },{
@@ -122,6 +122,8 @@ module.exports = async (Discord, bot, message) =>{
                 'guildData.$.moneyOwe': 1
             }
         });
+
+        response = await response.save()
 
         var money_owe = response.guildData.find(data => data.guildID == message.guild.id).moneyOwe/10;
 
