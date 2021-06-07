@@ -22,7 +22,9 @@ Users will get dinged if they work together, even if interrupted by another user
          d
     SwearJar: @tex now owes $0.60
               @mex now owes $0.90
-
+              
+              
+## Done
 Implement Unidecode library to sanitize inputs so that users cannot substitute Unicode characters to bypass filters.
 
     tex: 𝔟𝔞𝔫𝔫𝔢𝔡 𝔴𝔬𝔯𝔡
