@@ -4,28 +4,30 @@ A discord bot that counts the number of times a user says a banned word and calc
 ## To do
 Remove whitespace when comparing strings so that users cannot bypass the filter with spaces, new lines, or other delimiters.
 
-    tex:      d e e z n u t s
+    tex:      b a n n e d w o r d
     SwearJar: @tex now owes $0.30
 
 Users will get dinged if they work together, even if interrupted by another user.
 
-    tex: d
-         e
-         e
+    tex: b
+         a
+         n
     rex: so there i was in this hallway right
-         z
-    mex: n
-         u
-         t
-         s
+         n
+    mex: e
+         d
+         w
+         o
+         r
+         d
     SwearJar: @tex now owes $0.60
               @mex now owes $0.90
 
 Implement Unidecode library to sanitize inputs so that users cannot substitute Unicode characters to bypass filters.
 
-    tex: dėėz nüts
+    tex: 𝔟𝔞𝔫𝔫𝔢𝔡 𝔴𝔬𝔯𝔡
     SwearJar: @tex now owes $0.40
-    mex: 𝔡𝔢𝔢𝔷 𝔫𝔲𝔱𝔰
+    mex: b҉a҉n҉n҉e҉d҉ ҉w҉o҉r҉d҉
     SwearJar: @mex now owes $0.20
-    rex: Ⓓεｅｚ nuts
+    rex: ⓑα𝐍Ⓝ𝔢Đ ʷ𝓸я๔
     SwearJar: @rex now owes $1.00
