@@ -122,7 +122,7 @@ module.exports = async (Discord, bot, message) =>{
                 'guildData.$.swearCount': 1,
                 'guildData.$.moneyOwe': 1
             }
-        });
+        }, {new: true});
 
         await response.save()
 
